@@ -161,6 +161,12 @@ These examples show that you can use selectors in the query. The selector that i
 The database can take the form of an SQL query, stored procedure, or function call, as shown in the above examples. Select the appropriate radio button depending on whether the database query is an SQL **Query**
 or a **Stored procedure/function call**.
 
+**Stored procedure/function call Limitation**.
+Retrieve from or write to database filter does not support complex stored procedure/function call ( Complex store procedure/funcation call performs multiple tasks such as updates, inserts, and deletes. These types of statements might also return multiple result sets and output parameters). The filter only handles first result set. If stored procedure/function returns multiple result set, the filter ignores it.
+
+**Stored procedure/function exception handling**
+Store procedure/function call should handle the excpetion and throw it to JDBC layer. So that Retrieve from or write to database filter will fail otherwise it ignores the exception.
+
 **Table Structure**:
 To process the result set that is returned by the database query, the API Gateway needs to know whether the user's attributes are structured as rows or columns in the database table.
 
